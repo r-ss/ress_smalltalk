@@ -59,7 +59,6 @@ class AppConfig(BaseSettings):
 
     # SECRETS NAMESPACE
     SECRET_KEY: str = None
-    VALIDATORS_INITIAL_BALANCE: int
     VALIDATORS_INDEXES: str
     ETHERSCAN_API_KEY: str
     ETH_FEE_ADDRESS: str

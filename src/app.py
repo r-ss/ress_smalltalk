@@ -105,7 +105,7 @@ def newapp() -> None:
 
     # print("pizda")
 
-    jobtime = time(hour = 13, minute = 10, second = 0, tzinfo=config.TZ)
+    jobtime = time(hour = 8, minute = 0, second = 5, tzinfo=config.TZ)
     application.job_queue.run_daily(morning_routine, time=jobtime, name='morning-routine')
 
     # on different commands - answer in Telegram

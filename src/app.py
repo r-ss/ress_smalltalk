@@ -14,6 +14,7 @@ from telegram_commands import TelegramCommand, TelegramCommandsBin
 
 from crypt import bitcoin_price, ethereum_price, beaconcha_status, fee_wallet_balance
 from weather import weather_bcn, weather_spb
+from analytics import get_websites_analytics
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -51,6 +52,13 @@ async def info_weather(update: Update, context: CallbackContext = None):
         return ConversationHandler.END
     await send(m)
 
+async def info_websites_analytics(update: Update, context: CallbackContext = None):
+    m = get_websites_analytics()
+    if update:
+        await update.message.reply_text(m)
+        return ConversationHandler.END
+    await send(m)
+
 async def morning_routine(context: CallbackContext):
     await info_crypto(update=None)
     await info_weather(update=None)
@@ -60,6 +68,7 @@ async def wrapper_all(update: Update, context: CallbackContext):
 
     await info_crypto(update=None)
     await info_weather(update=None)
+    await info_websites_analytics(update=None)
     # await application.bot.send_message(chat_id=config.CHAT_ID, text="Kukusiki Send /start")
 
 
@@ -76,7 +85,10 @@ commands = TelegramCommandsBin()
 
 commands.add(TelegramCommand("crypto", info_crypto, description="show crypto stats"))
 commands.add(TelegramCommand("weather", info_weather, description="show current weather"))
+commands.add(TelegramCommand("web", info_websites_analytics, description="show web stats"))
 commands.add(TelegramCommand("all", wrapper_all, description="show all"))
+
+
 
 async def show_commands_list(update: Update, context: CallbackContext) -> None:
     await commands.show_commands_list(update, context)

@@ -20,6 +20,7 @@ venv/
 
 # Secrets
 .env.secrets
+google_analytics_api_credentials.json
 
 # Personal
 snippets.txt

@@ -140,7 +140,5 @@ def get_websites_analytics():
 
     s = ""
     for r in outputs:
-        s+=f"{r['name']}: {r['weekly_visits']}\n"
-
-  
-    return s.rstrip()
+        s+=f"{r['name']}: {r['weekly_visits']}\n"  
+    return s.strip()

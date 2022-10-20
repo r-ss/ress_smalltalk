@@ -30,13 +30,15 @@ async def info_crypto(update: Update, context: CallbackContext = None):
     btc_price, eth_price, fee_wallet, staking = await asyncio.gather(*tasks)
 
     fee_wallet_usd = "err"
-    if type(eth_price) == float:
+    if type(fee_wallet) == float and type(eth_price) == float:
         fee_wallet_usd = fee_wallet * eth_price
+        fee_wallet_usd = f"${fee_wallet_usd:.1f}"
+        fee_wallet = f"{fee_wallet:.4f}"
 
     m = f'''BTC: {btc_price:.0f}
 ETH: {eth_price:.0f}
 { staking }
-Fees: {fee_wallet:.4f} (${fee_wallet_usd:.1f})
+Fees: {fee_wallet} ({fee_wallet_usd})
 '''
     if update:
         await update.message.reply_text(m)

@@ -13,10 +13,10 @@ requests = "^2.28.1"
 aiohttp = "^3.8.3"
 python-telegram-bot = {version = "^20.0a4", allow-prereleases = true}
 pydantic = "^1.10.2"
-google-analytics-data = "^0.14.2"
+# google-analytics-data = "^0.14.2"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^5.0.4"
+flake8 = "^5.0.4" 
 oitnb = "^0.2.2"
 pytest-asyncio = "^0.19.0"
 
